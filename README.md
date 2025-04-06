@@ -29,6 +29,9 @@ Fraud Detection: Identifying suspicious patterns or anomalies in financial trans
 
 Network & IT Operations: Mapping and analyzing networks, servers, devices, and their relationships.
 
+
+ # Example of how Neo4j connects with diff nodes and its realtionships
+ 
 ![Screenshot 2025-04-05 225914](https://github.com/user-attachments/assets/5952dc6b-2f06-4c02-a954-ee9a2fd6208e)
 
 
