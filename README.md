@@ -29,6 +29,10 @@ Fraud Detection: Identifying suspicious patterns or anomalies in financial trans
 
 Network & IT Operations: Mapping and analyzing networks, servers, devices, and their relationships.
 
+![Screenshot 2025-04-05 225914](https://github.com/user-attachments/assets/5952dc6b-2f06-4c02-a954-ee9a2fd6208e)
+
+
+
 # SF Business Persons Dataset in Neo4j
 
 This project involves the loading and analysis of a dataset containing business information from San Francisco into a Neo4j graph database. The dataset includes details such as business names, user names, zip codes, device IDs, geographical locations, timestamps, and business addresses.
