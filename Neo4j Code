@@ -1,0 +1,70 @@
+1. List all businesses in San Francisco:
+
+MATCH (b:Business)
+WHERE b.city = 'San Francisco'
+RETURN b.business_name, b.business_address;
+
+
+2. Find businesses by a specific zip code:
+
+MATCH (b:Business)
+WHERE b.zip = '94118'
+RETURN b.business_name, b.zip;
+
+
+3. Get the count of businesses per zip code:
+
+MATCH (b:Business)
+RETURN b.zip, count(*) AS business_count
+ORDER BY business_count DESC;
+
+4. Businesses scanned after a certain date:
+
+MATCH (b:Business)
+WHERE date(b.scan_timestamp) > date("2022-01-01")
+RETURN b.business_name, b.scan_timestamp;
+
+5. Geolocation-based queries (e.g., longitude/latitude ranges):
+
+MATCH (b:Business)
+WHERE b.latitude > 37.78 AND b.longitude < -122.45
+RETURN b.business_name, b.latitude, b.longitude;
+
+6. Find the First and Last Scan Timestamps for Each Business
+
+MATCH (b:Business)
+WITH b, MIN(b.scan_timestamp) AS first_scan, MAX(b.scan_timestamp) AS last_scan
+RETURN b.business_name, first_scan, last_scan
+LIMIT 10;
+
+
+7. Find Businesses with Missing Data (e.g., Missing Latitude/Longitude)
+MATCH (b:Business)
+WHERE b.latitude IS NULL OR b.longitude IS NULL
+RETURN b.business_name, b.city, b.zip
+LIMIT 10;
+
+8. Create Relationships Between Businesses in the Same City
+
+MATCH (b1:Business), (b2:Business)
+WHERE b1.city = b2.city AND b1.business_name <> b2.business_name
+CREATE (b1)-[:CONNECTED_TO]->(b2)
+RETURN b1.business_name, b2.business_name
+LIMIT 10;
+
+
+9. Find Nearby Businesses Based on Longitude and Latitude
+MATCH (b:Business)
+WHERE b.latitude > 37.77 AND b.latitude < 37.79 AND b.longitude > -122.43 AND b.longitude < -122.41
+RETURN b.business_name, b.latitude, b.longitude
+LIMIT 10;
+
+
+10. Find Business Names with a Specific Keyword in Their Name
+
+MATCH (b:Business)
+WHERE b.business_name CONTAINS 'Cafe'
+RETURN b.business_name, b.city, b.zip
+LIMIT 10;
+
+
